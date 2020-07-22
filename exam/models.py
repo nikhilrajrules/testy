@@ -1,12 +1,14 @@
 from django.db import models
 from register.models import Student
-from dashboard.models import Profile
+# from dashboard.models import Profile
+import random
 # Create your models here.
 class Mcq(models.Model):
     """A typical class defining a model, derived from the Model class."""
-
+    def random_string():
+        return str(random.randint(1000000000, 9999999999))
     # Fields
-    test_no = models.CharField(max_length=10,help_text='Test Number')
+    test_no = models.CharField(max_length=10,help_text='Test Number please use this and same test number only for all questions replace if different and rember test id',default= random_string)
     q_no = models.IntegerField(help_text='Question number')
     ques = models.TextField(help_text="Question Description")
     op1 = models.CharField(max_length=100,help_text='Option 1')
@@ -18,6 +20,7 @@ class Mcq(models.Model):
     ans3 = models.BooleanField(help_text='Answer option number3')
     ans4 = models.BooleanField(help_text='Answer option number4')
     points = models.IntegerField(help_text='Marks alooted to this question')
+    # used = models.BooleanField(help_text='answered or not',default=False)
 
     ...
 
