@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from exam.models import Mcq
 from dashboard.models import Profile
-from questions.models import Joiners
+# from questions.models import Joiners
 from register.models import Student
 from exam.models import Mcq
 from django.contrib.auth.decorators import permission_required
@@ -68,6 +68,10 @@ def exam(request,email,testno,qno):
         score=0
         for i in pr:
             score+=int(i.test_score)
+        for i in range(len(pr)):
+            pr[i].test_score=score
+            pr[i].save()
+            
         context = {'form':form,'Mcq':mcq[qno-1],'Profile':pr[0],'score':score}
         return render(request,'result.html',context)
 

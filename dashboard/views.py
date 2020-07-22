@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from register.models import Student
 from dashboard.models import Profile
-from questions.models import Joiners
+# from questions.models import Joiners
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
